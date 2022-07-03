@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  database:
+    image: postgres
+    container_name: database_keeplanner
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=keeplanner
+      - POSTGRES_DB=keeplanner
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
