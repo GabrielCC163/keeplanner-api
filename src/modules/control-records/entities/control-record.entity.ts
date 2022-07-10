@@ -1,9 +1,10 @@
+import { BaseEntity } from '@database/base.entity';
 import { UserEntity } from '@modules/users/entities/user.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity('control_records')
 @Index(['month', 'year', 'userId'], { unique: true })
-export class ControlRecordEntity {
+export class ControlRecordEntity extends BaseEntity {
   @Column({ type: 'integer' })
   month: number;
 

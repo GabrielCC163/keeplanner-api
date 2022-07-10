@@ -41,8 +41,6 @@ export class UsersService {
       .createQueryBuilder('user')
       .where('user.email = :email', { email })
       .addSelect('user.password')
-      .addSelect('user.verificationToken')
-      .leftJoinAndSelect('user.address', 'address')
       .getOne();
   }
 }

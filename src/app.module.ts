@@ -10,9 +10,11 @@ import { UsersModule } from '@modules/users/users.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from '@modules/auth/guard/jwt-auth.guard';
 import { ControlRecordsModule } from './modules/control-records/control-records.module';
+import { AuthModule } from '@modules/auth/auth.modules';
 
 @Module({
   imports: [
+    AuthModule,
     ConfigModule.forRoot({
       load: [getConfig],
       cache: false,

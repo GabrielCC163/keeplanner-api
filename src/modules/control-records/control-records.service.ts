@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateControlRecordDto } from './dto/create-control-record.dto';
@@ -18,13 +18,16 @@ export class ControlRecordsService {
 
   async findOne(userId: string, findControlRecord: FindControlRecordDto) {
     const { month, year } = findControlRecord;
-    return await this.controlRecordRepository.findOneOrFail({
+    const controlRecord = await this.controlRecordRepository.findOne({
       where: {
         month,
         year,
         userId,
       },
     });
+
+    if (!controlRecord) throw new NotFoundException('Not found');
+    return controlRecord;
   }
 
   async remove(id: string) {

@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Request, Query, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  Request,
+  Query,
+  HttpCode,
+  BadRequestException,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ControlRecordsService } from './control-records.service';
 import { CreateControlRecordDto } from './dto/create-control-record.dto';
@@ -17,6 +29,8 @@ export class ControlRecordsController {
 
   @Get()
   async findOne(@Request() req, @Query() findControlRecord: FindControlRecordDto) {
+    const { month, year } = findControlRecord;
+    if (!month || !year) throw new BadRequestException('month and year are required');
     return await this.controlRecordsService.findOne(req.user.userId, findControlRecord);
   }
 
