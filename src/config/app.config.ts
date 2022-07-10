@@ -1,4 +1,16 @@
-export const getConfig = () => {
+export interface AppConfig {
+  node_env: string;
+  database: {
+    user: string;
+    password: string;
+    name: string;
+    host: string;
+    port: number;
+  };
+  salt_rounds: number;
+}
+
+export const getConfig = (): AppConfig => {
   const env = process.env;
 
   return {
@@ -10,5 +22,6 @@ export const getConfig = () => {
       host: env.DB_HOST,
       port: Number(env.DB_PORT),
     },
+    salt_rounds: Number(env.SALT_ROUNDS),
   };
 };

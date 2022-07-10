@@ -5,7 +5,7 @@
 ## Start
 
 ```
-docker-compose up -d database
+docker-compose up -d
 
 yarn typeorm migration:run
 

@@ -11,7 +11,7 @@ const AppDataSource: ConnectionOptions = {
   username: apiConfig.database.user,
   password: apiConfig.database.password,
   database: apiConfig.database.name,
-  entities: [__dirname + '/**/*.entity.ts'],
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: false,
 
   migrationsRun: false,
@@ -20,7 +20,7 @@ const AppDataSource: ConnectionOptions = {
   connectTimeoutMS: 10000,
   maxQueryExecutionTime: 100,
 
-  migrations: [__dirname + '/database/migrations/**/*.ts'],
+  migrations: [__dirname + '/database/migrations/**/*{.ts,.js}'],
   cli: {
     migrationsDir: 'src/database/migrations',
   },
