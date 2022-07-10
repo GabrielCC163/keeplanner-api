@@ -8,6 +8,8 @@ export interface AppConfig {
     port: number;
   };
   salt_rounds: number;
+  auth_secret: string;
+  jwt_expire: string;
 }
 
 export const getConfig = (): AppConfig => {
@@ -23,5 +25,7 @@ export const getConfig = (): AppConfig => {
       port: Number(env.DB_PORT),
     },
     salt_rounds: Number(env.SALT_ROUNDS),
+    auth_secret: env.AUTH_SECRET,
+    jwt_expire: env.JWT_EXPIRE,
   };
 };

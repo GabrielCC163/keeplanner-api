@@ -35,4 +35,14 @@ export class UsersService {
       password: hashedPass,
     });
   }
+
+  async findUserByEmailWithPassword(email: string): Promise<UserEntity> {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .addSelect('user.password')
+      .addSelect('user.verificationToken')
+      .leftJoinAndSelect('user.address', 'address')
+      .getOne();
+  }
 }
