@@ -11,6 +11,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from '@modules/auth/guard/jwt-auth.guard';
 import { ControlRecordsModule } from './modules/control-records/control-records.module';
 import { AuthModule } from '@modules/auth/auth.modules';
+import { IncomesModule } from './modules/incomes/incomes.module';
+import { ExpensesModule } from './modules/expenses/expenses.module';
+import { SavingsModule } from './modules/savings/savings.module';
 
 @Module({
   imports: [
@@ -23,6 +26,9 @@ import { AuthModule } from '@modules/auth/auth.modules';
     TypeOrmModule.forRoot(AppDataSource),
     UsersModule,
     ControlRecordsModule,
+    IncomesModule,
+    ExpensesModule,
+    SavingsModule,
   ],
   controllers: [AppController],
   providers: [
