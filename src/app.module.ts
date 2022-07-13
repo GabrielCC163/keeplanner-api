@@ -14,6 +14,7 @@ import { AuthModule } from '@modules/auth/auth.modules';
 import { IncomesModule } from './modules/incomes/incomes.module';
 import { ExpensesModule } from './modules/expenses/expenses.module';
 import { SavingsModule } from './modules/savings/savings.module';
+import { InstallmentCategoriesModule } from './modules/installment-categories/installment-categories.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { SavingsModule } from './modules/savings/savings.module';
     IncomesModule,
     ExpensesModule,
     SavingsModule,
+    InstallmentCategoriesModule,
   ],
   controllers: [AppController],
   providers: [
