@@ -24,6 +24,7 @@ export class ControlRecordsService {
         year,
         userId,
       },
+      relations: ['savings', 'installmentCategories', 'incomes', 'expenses'],
     });
 
     if (!controlRecord) throw new NotFoundException('Not found');

@@ -9,7 +9,5 @@ docker-compose up -d
 
 yarn typeorm migration:run
 
-yarn seed:admin
-
-yarn dev
+yarn start:dev
 ```

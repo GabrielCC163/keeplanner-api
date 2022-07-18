@@ -1,8 +1,23 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
+import * as dotenv from 'dotenv';
+import { setupSwagger } from '@config/swagger.config';
+import { ConfigService } from '@nestjs/config';
+import { AppConfig } from '@config/app.config';
+dotenv.config();
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const config = app.get<ConfigService<AppConfig, true>>(ConfigService);
+  const applicationName = config.get<AppConfig['app_name']>('app_name');
+
+  app.enableCors();
+  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+
+  setupSwagger(applicationName, app);
+  await app.listen(6001);
 }
+
 bootstrap();
