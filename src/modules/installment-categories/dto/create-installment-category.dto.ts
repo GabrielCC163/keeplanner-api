@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString, IsUUID, Max, Min } from 'class-validator';
 
 export class CreateInstallmentCategoryDto {
   @ApiProperty()
@@ -23,4 +23,9 @@ export class CreateInstallmentCategoryDto {
   @Min(1)
   @Max(12)
   dueMonth: number;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsUUID()
+  controlRecordId: string;
 }
