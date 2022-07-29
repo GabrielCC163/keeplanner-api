@@ -7,7 +7,7 @@
 ```
 docker-compose up -d
 
-yarn typeorm migration:run
+yarn typeorm:run
 
 yarn start:dev
 ```

@@ -16,7 +16,7 @@ export class CreateExpenseDto {
 
   @ApiPropertyOptional()
   @IsOptional()
-  @Transform(({ value }) => Number(value))
+  @Transform(({ value }) => (value ? Number(value) : null))
   @IsNumber()
   @Min(1)
   @Max(31)
