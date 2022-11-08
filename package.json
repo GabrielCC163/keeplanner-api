@@ -23,7 +23,7 @@
     "typeorm:migrate": "npm run typeorm migration:generate -- -n",
     "typeorm:run": "yarn typeorm migration:run",
     "typeorm:revert": "yarn typeorm migration:revert",
-    "migrate:prod": "./node_modules/typeorm/cli.js migration:run --dataSource ./dist/src/ormconfig.js"
+    "migrate:prod": "./node_modules/typeorm/cli.js -f ./dist/ormconfig.js migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
