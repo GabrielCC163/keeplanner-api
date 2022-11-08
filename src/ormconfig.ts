@@ -19,6 +19,9 @@ const AppDataSource: ConnectionOptions = {
   logger: 'file',
   connectTimeoutMS: 10000,
   maxQueryExecutionTime: 100,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 
   migrations: [__dirname + '/database/migrations/**/*{.ts,.js}'],
   cli: {
