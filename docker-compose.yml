@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: keeplanner
+      POSTGRES_DB: keeplanner
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    container_name: database_keeplanner
+    restart: unless-stopped
+
+volumes:
+  postgres:
